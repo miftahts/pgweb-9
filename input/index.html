@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Form Input</h2>
+
+    <form action="input.php" onsubmit="return validateForm()" method="post">
+        <label for="long">Longitude:</label><br>
+        <input type="text" id="long" name="longitude" value=""><br>
+
+        <label for="lat">Latitude:</label><br>
+        <input type="text" id="lat" name="latitude" value=""><br>
+
+        <label for="nama">Nama Usaha:</label><br>
+        <input type="text" id="nama" name="nama_usaha" value=""><br>
+
+        <label for="sub">Subsektor Usaha:</label><br>
+        <input type="text" id="sub" name="subsektor" value=""><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="informasi"></p>
+
+    <script>
+    function validateForm() {
+        let lng  = document.getElementById("long").value;
+        let lat  = document.getElementById("lat").value;
+        let nama = document.getElementById("nama").value;
+        let text = "";
+
+        if (nama.trim() === "") {
+            text = "Nama usaha tidak boleh kosong";
+        } else if (lng.trim() === "" || isNaN(lng) || lat.trim() === "" || isNaN(lat)) {
+            text = "Longitude dan latitude harus berupa angka";
+        }
+
+        document.getElementById("informasi").innerHTML = text;
+        return text === "";   // false = batalkan submit
+    }
+    </script>
+</body>
+</html>
